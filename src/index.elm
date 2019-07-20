@@ -86,47 +86,94 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ h2 [] [ text "Advice Kitties" ]
+    article []
+        [ node "link" [ href "https://fonts.googleapis.com/css?family=Poppins|Yatra+One&display=swap" ] []
         , div
             [ css
-                [ width (vw 50)
-                , height (vh 60)
-                , position relative
+                [ display inlineFlex
+                , flexDirection column
+                , justifyContent center
+                , width (pct 100)
                 ]
             ]
-            [ img
-                [ src model.url
-                , css
-                    [ maxWidth (pct 100)
-                    , maxHeight (pct 100)
-                    , width auto
-                    , height auto
-                    , margin auto
-                    ]
-                ]
-                []
-            , div
+            [ div
                 [ css
-                    [ marginTop (px -10)
-                    , padding (px 10)
-                    , backgroundColor (rgba 50 50 50 1)
-                    , color (hex "#fff")
-                    , zIndex (int 100001)
-                    , textAlign center
-                    , position absolute
+                    [ maxWidth (vw 90)
+                    , minWidth (vw 50)
+                    , margin auto
+                    , display inlineFlex
+                    , flexDirection column
+                    , fontFamilies [ "Poppins", "sans-serif" ]
+                    , border3 (px 3) solid (hex "#9400D3")
+                    , borderRadius (px 20)
+                    , padding (rem 2)
                     ]
                 ]
-                [ text model.advice ]
-            ]
-        , button
-            [ onClick MorePlease
-            , css
-                [ display block
-                , marginTop (px 50)
+                [ h1
+                    [ css
+                        [ textAlign center
+                        , width (pct 100)
+                        , fontFamilies [ "Yatra One", "cursive" ]
+                        , fontWeight bold
+                        , fontSize (rem 2)
+                        ]
+                    ]
+                    [ text "Advice Kitties" ]
+                , div
+                    [ css
+                        [ width (pct 100)
+                        , displayFlex
+                        , alignItems center
+                        ]
+                    ]
+                    [ figure
+                        [ css
+                            [ display inlineTable
+                            , borderSpacing (px 20)
+                            , width (pct 1)
+                            , textAlign center
+                            , margin (px 0)
+                            ]
+                        ]
+                        [ img
+                            [ src model.url
+                            , css
+                                [ maxWidth (vw 70)
+                                , maxHeight (vh 60)
+
+                                -- , width auto
+                                -- , height auto
+                                , margin auto
+                                ]
+                            ]
+                            []
+                        , figcaption
+                            [ css
+                                [ backgroundColor (rgba 50 50 50 1)
+                                , color (hex "#fff")
+                                , padding4 (px 10) (px 0) (px 10) (px 0)
+                                , marginTop (px -10)
+                                ]
+                            ]
+                            [ text model.advice
+                            ]
+                        ]
+                    ]
+                , button
+                    [ onClick MorePlease
+                    , css
+                        [ display block
+                        , marginTop (px 50)
+                        , padding4 (px 20) (px 10) (px 20) (px 10)
+                        , backgroundColor (hex "#9400D3")
+                        , color (hex "#FFF")
+                        , fontWeight bold
+                        , fontSize (rem 1.2)
+                        ]
+                    ]
+                    [ text "More Please!" ]
                 ]
             ]
-            [ text "More Please!" ]
         ]
 
 
