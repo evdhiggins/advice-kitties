@@ -1,4 +1,4 @@
-module Main exposing (Model, Msg(..), adviceDecoder, catDecoder, catListDecoder, extractCat, getRandomAdvice, getRandomCat, init, main, subscriptions, update, view)
+module Index exposing (main)
 
 import Browser
 import Css exposing (..)
@@ -14,6 +14,7 @@ import Json.Decode exposing (Decoder, field, string)
 -- MAIN
 
 
+main : Program () Model Msg
 main =
     Browser.element
         { init = init
@@ -76,7 +77,7 @@ update msg model =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 
@@ -90,9 +91,9 @@ view model =
         [ node "link" [ href "https://fonts.googleapis.com/css?family=Poppins|Yatra+One&display=swap" ] []
         , div
             [ css
-                [ display inlineFlex
+                [ displayFlex
                 , flexDirection column
-                , justifyContent center
+                , alignItems center
                 , width (pct 100)
                 ]
             ]
@@ -100,7 +101,6 @@ view model =
                 [ css
                     [ maxWidth (vw 90)
                     , minWidth (vw 50)
-                    , margin auto
                     , display inlineFlex
                     , flexDirection column
                     , fontFamilies [ "Poppins", "sans-serif" ]
@@ -124,6 +124,7 @@ view model =
                         [ width (pct 100)
                         , displayFlex
                         , alignItems center
+                        , justifyContent center
                         ]
                     ]
                     [ figure
@@ -140,9 +141,6 @@ view model =
                             , css
                                 [ maxWidth (vw 70)
                                 , maxHeight (vh 60)
-
-                                -- , width auto
-                                -- , height auto
                                 , margin auto
                                 ]
                             ]
